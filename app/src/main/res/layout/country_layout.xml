@@ -8,18 +8,18 @@
     android:background="@color/cardview_light_background">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/country_name"
+        android:id="@+id/nation_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/country_capitol"
-        app:layout_constraintEnd_toStartOf="@+id/country_code"
+        app:layout_constraintBottom_toTopOf="@+id/nation_capital"
+        app:layout_constraintEnd_toStartOf="@+id/nation_code"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Country, Region"/>
+        tools:text="Nation, Region"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/country_code"
+        android:id="@+id/nation_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="3dp"
@@ -28,13 +28,13 @@
         tools:text="Code"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/country_capitol"
+        android:id="@+id/nation_capital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/country_name"
-        tools:text="Capitol"/>
+        app:layout_constraintTop_toBottomOf="@+id/nation_name"
+        tools:text="Capital"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

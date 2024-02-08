@@ -8,10 +8,10 @@
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/countries_list"
+        android:id="@+id/nations_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/country_layout"/>
+        tools:listitem="@layout/nation_layout"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -22,6 +22,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

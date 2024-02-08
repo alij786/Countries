@@ -2,8 +2,8 @@ package com.example.countries.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.countries.usecases.GetCountriesInteractor
-import com.example.countries.entities.Countries
+import com.example.countries.usecases.GetNationsInteractor
+import com.example.countries.entities.Nations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,10 +12,10 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CountriesViewModel(getCountries: GetCountriesInteractor) : ViewModel() {
+class NationsViewModel(getNations: GetNationsInteractor) : ViewModel() {
     data class UIState(
         val loading: Boolean = false,
-        val countries: Countries = emptyList()
+        val nations: Nations = emptyList()
     )
 
     sealed class Effect {
@@ -41,16 +41,16 @@ class CountriesViewModel(getCountries: GetCountriesInteractor) : ViewModel() {
         viewModelScope.launch {
             setState { copy(loading = true) }
             withContext(Dispatchers.IO) {
-                getCountries().run {
+                getNations().run {
                     withContext(Dispatchers.Main) {
-                        onSuccess { countries ->
-                            setState { copy(loading = false, countries = countries) }
+                        onSuccess { nations ->
+                            setState { copy(loading = false, nations = nations) }
                             setEffect { Effect.CompleteMessage }
                         }
                         onFailure { e ->
                             setState { copy(loading = false) }
                             setEffect {
-                                Effect.ErrorMessage(e.message ?: "Error loading countries.")
+                                Effect.ErrorMessage(e.message ?: "Error loading nations.")
                             }
                         }
                     }

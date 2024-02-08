@@ -12,23 +12,23 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.Adapter.StateRestorationPolicy
 import com.example.countries.R
-import com.example.countries.databinding.FragmentCountryBinding
-import com.example.countries.ui.CountriesViewModel.Effect
-import com.example.countries.usecases.getCountriesInteractor
+import com.example.countries.databinding.FragmentNationsBinding
+import com.example.countries.ui.NationsViewModel.Effect
+import com.example.countries.usecases.getNationsInteractor
 import com.example.countries.withFactory
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
-class CountriesFragment : Fragment(R.layout.fragment_country) {
-    private var _binding: FragmentCountryBinding? = null
+class NationsFragment : Fragment(R.layout.fragment_nations) {
+    private var _binding: FragmentNationsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CountriesViewModel by viewModels {
-        withFactory { CountriesViewModel(getCountriesInteractor()) }
+    private val viewModel: NationsViewModel by viewModels {
+        withFactory { NationsViewModel(getNationsInteractor()) }
     }
 
-    private val adapter: CountriesAdapter by lazy {
-        CountriesAdapter().apply {
+    private val adapter: NationsAdapter by lazy {
+        NationsAdapter().apply {
             stateRestorationPolicy = StateRestorationPolicy.PREVENT_WHEN_EMPTY
         }
     }
@@ -42,9 +42,9 @@ class CountriesFragment : Fragment(R.layout.fragment_country) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentCountryBinding.inflate(inflater).apply {
-            countriesList.layoutManager = layoutManager
-            countriesList.adapter = adapter
+        return FragmentNationsBinding.inflate(inflater).apply {
+            nationsList.layoutManager = layoutManager
+            nationsList.adapter = adapter
             _binding = this
         }.root
     }
@@ -58,7 +58,7 @@ class CountriesFragment : Fragment(R.layout.fragment_country) {
                         with(binding) {
                             progressBar.visibility =
                                 if (uiState.loading) View.VISIBLE else View.GONE
-                            adapter.setData(uiState.countries)
+                            adapter.setData(uiState.nations)
                         }
                     }
                 }
